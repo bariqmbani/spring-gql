@@ -1,0 +1,8 @@
+type Query {
+    customer(id: ID!): Customer
+}
+
+type Mutation {
+    createLoan(loan: LoanInput!): Loan
+    createCustomer(name: String!, email: String!, phone: String!, address: String!, birthDate: String!): Customer
+}

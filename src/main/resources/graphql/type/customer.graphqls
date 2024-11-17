@@ -1,0 +1,11 @@
+type Customer {
+    id: ID!
+    name: String!
+    email: String!
+    phone: String!
+    address: String!
+    birthDate: String!
+    accounts: [Account]!
+    loans: [Loan]!
+    transactions: [TransactionEntry]!
+}

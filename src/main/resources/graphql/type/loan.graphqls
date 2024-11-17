@@ -1,0 +1,19 @@
+type Loan {
+    id: ID!
+    amount: Float!
+    interestRate: Float!
+    outstandingAmount: Float!
+    customer: Customer!
+    description: String!
+}
+
+extend type Query {
+    loan(id: ID!): Loan
+}
+
+input LoanInput {
+    amount: Float!
+    interestRate: Float!
+    customerId: ID!
+    description: String!
+}
