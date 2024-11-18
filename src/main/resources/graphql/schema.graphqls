@@ -1,8 +1,57 @@
 type Query {
     customer(id: ID!): Customer
+    account(id: ID!): Account
+    loan(id: ID!): Loan
+    transaction(id: ID!): TransactionEntry
 }
 
 type Mutation {
     createLoan(loan: LoanInput!): Loan
     createCustomer(name: String!, email: String!, phone: String!, address: String!, birthDate: String!): Customer
+}
+
+type Customer {
+    id: ID!
+    name: String!
+    email: String!
+    phone: String!
+    address: String!
+    birthDate: String!
+    accounts: [Account]!
+    loans: [Loan]!
+    transactions: [TransactionEntry]!
+}
+
+type Account {
+    id: ID!
+    name: String!
+    accountNumber: String!
+    balance: Float!
+    customer: Customer!
+    transactions: [TransactionEntry]!
+}
+
+type Loan {
+    id: ID!
+    amount: Float!
+    interestRate: Float!
+    outstandingAmount: Float!
+    customer: Customer!
+    description: String!
+}
+
+input LoanInput {
+    amount: Float!
+    interestRate: Float!
+    customerId: ID!
+    description: String!
+}
+
+type TransactionEntry {
+    id: ID!
+    description: String!
+    amount: Float!
+    rrn: String!
+    timestamp: String!
+    account: Account!
 }
